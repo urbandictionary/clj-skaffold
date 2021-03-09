@@ -5,9 +5,8 @@ build:
     - image: webapp-dev
       context: webapp
       sync:
-        manual:
-          - src: ./src/webapp/core.clj
-            dest: /usr/src/app/src/
+        infer:
+          - '**/*'
 deploy:
   kubectl:
     manifests:
