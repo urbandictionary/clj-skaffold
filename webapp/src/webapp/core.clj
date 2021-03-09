@@ -5,9 +5,11 @@
    [ring.middleware.reload :refer [wrap-reload]]
    [reitit.ring :refer [create-default-handler ring-handler router]]))
 
-(defn handler [_req] {:body "<h1>Hello, world!</h1>" :headers {"Content-Type" "text/html"} :status 200})
+(defn ok [body] {:body body :headers {"Content-Type" "text/html"} :status 200})
 
-(defn will-it-blend [_] {:body "<h1>Will it blend?</h1>" :headers {"Content-Type" "text/html"} :status 200})
+(defn handler [_req] (ok "<h1>Hello, world!</h1>"))
+
+(defn will-it-blend [_] (ok "<h1>Will it blend?</h1>"))
 
 (def app
   (ring-handler (router [["/" {:get {:handler handler}}] ;;
